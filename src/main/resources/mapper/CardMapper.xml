@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blizzard.heatstone.api.dao.CardDao" >
+  <resultMap id="BaseResultMap" type="com.blizzard.heatstone.api.swagger.model.Card" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="costs" property="costs" jdbcType="INTEGER" />
+    <result column="quality" property="quality" jdbcType="INTEGER" />
+    <result column="characters" property="characters" jdbcType="INTEGER" />
+    <result column="race" property="race" jdbcType="INTEGER" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="bar_img_url" property="barImgUrl" jdbcType="VARCHAR" />
+    <result column="occupation_id" property="occupationId" jdbcType="INTEGER" />
+    <result column="dust" property="dust" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="INTEGER" />
+    <result column="effect_desc" property="effectDesc" jdbcType="VARCHAR" />
+    <result column="adapted" property="adapted" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, costs, quality, characters, race, img_url, bar_img_url, occupation_id, dust, 
+    source, effect_desc, adapted, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertSelective" parameterType="com.blizzard.heatstone.api.swagger.model.Card" keyProperty="id" useGeneratedKeys="true" >
+    insert into card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="costs != null" >
+        costs,
+      </if>
+      <if test="quality != null" >
+        quality,
+      </if>
+      <if test="characters != null" >
+        characters,
+      </if>
+      <if test="race != null" >
+        race,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="barImgUrl != null" >
+        bar_img_url,
+      </if>
+      <if test="occupationId != null" >
+        occupation_id,
+      </if>
+      <if test="dust != null" >
+        dust,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="effectDesc != null" >
+        effect_desc,
+      </if>
+      <if test="adapted != null" >
+        adapted,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="costs != null" >
+        #{costs,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="characters != null" >
+        #{characters,jdbcType=INTEGER},
+      </if>
+      <if test="race != null" >
+        #{race,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="barImgUrl != null" >
+        #{barImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationId != null" >
+        #{occupationId,jdbcType=INTEGER},
+      </if>
+      <if test="dust != null" >
+        #{dust,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="effectDesc != null" >
+        #{effectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="adapted != null" >
+        #{adapted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blizzard.heatstone.api.swagger.model.Card" >
+    update card
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="costs != null" >
+        costs = #{costs,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        quality = #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="characters != null" >
+        characters = #{characters,jdbcType=INTEGER},
+      </if>
+      <if test="race != null" >
+        race = #{race,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="barImgUrl != null" >
+        bar_img_url = #{barImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationId != null" >
+        occupation_id = #{occupationId,jdbcType=INTEGER},
+      </if>
+      <if test="dust != null" >
+        dust = #{dust,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="effectDesc != null" >
+        effect_desc = #{effectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="adapted != null" >
+        adapted = #{adapted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

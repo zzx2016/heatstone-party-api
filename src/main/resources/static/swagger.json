@@ -1,0 +1,289 @@
+swagger: '2.0'
+info:
+  description: 'this is apis for heat-stone '
+  version: 1.0.0
+  title: Swagger for HeatStone
+  contact:
+    email: luxun_helloworld@163.com
+host: heatstone-party.com
+basePath: /v2
+tags:
+  - name: card
+    description: '卡牌相关接口'
+  - name: cardgroup
+    description: '卡组相关接口'
+schemes:
+  - http
+paths:
+  /card/:
+    post:
+      tags:
+        - card
+      summary: 新增卡牌
+      description: 新增卡牌
+      operationId: insertCard
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: card
+          description: '卡牌详情'
+          required: true
+          schema:
+            $ref: '#/definitions/Card'
+      responses:
+        200:
+          description: '接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+  /card/{id}:
+    get:
+      tags:
+      - "card"
+      summary: 根据主键查询卡牌详情
+      description: 据主键查询卡牌详情
+      operationId: selectCardById
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "卡牌id"
+        required: true
+        type: integer
+      responses:
+        200:
+          description: '接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+    delete:
+      tags:
+      - "card"
+      summary: 根据主键删除卡牌
+      description: 根据主键删除卡牌
+      operationId: deleteCardById
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "卡牌id"
+        required: true
+        type: integer
+      responses:
+        200:
+          description: '接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+    put:
+      tags:
+      - "card"
+      summary: 更新卡牌详情
+      description: 更新卡牌详情
+      operationId: updateCardById
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "卡牌id"
+        required: true
+        type: integer
+      - in: "body"
+        name: "card"
+        description: "卡牌信息"
+        required: true
+        schema:
+          $ref: '#/definitions/Card'
+      responses:
+        200:
+          description: '接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+  /cardgroup/:
+    post:
+      tags:
+        - cardgroup
+      summary: 新增卡组
+      description: 新增卡组
+      operationId: insertCardGroup
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: card
+          description: '卡牌详情'
+          required: true
+          schema:
+            $ref: '#/definitions/CardGroup'
+      responses:
+        200:
+          description: '新增接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+  /cardgroup/{id}:
+    get:
+      tags:
+      - "cardgroup"
+      summary: 根据主键查询卡组详情
+      description: 根据主键查询卡组详情
+      operationId: selectCardGroupById
+      parameters:
+      - in: "path"
+        name: "id"
+        description: '卡组id'
+        required: true
+        type: integer
+      responses:
+        200:
+          description: '查询接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object 
+    put:
+      tags:
+      - "cardgroup"
+      summary: 更新卡组信息
+      description: 更新卡组信息
+      operationId: updateCardGroupById
+      parameters:
+      - in: "path"
+        name: "id"
+        description: '卡组id'
+        required: true
+        type: integer
+      - in: "body"
+        name: "cardgroup"
+        description: "卡组信息"
+        required: true
+        schema:
+          $ref: '#/definitions/CardGroup'
+      responses:
+        200:
+          description: '更新接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object 
+    delete:
+      tags:
+      - "cardgroup"
+      summary: 删除卡组
+      description: 删除卡组
+      operationId: deleteCardGroupById
+      parameters:
+      - in: "path"
+        name: "id"
+        description: '卡组id'
+        required: true
+        type: integer
+      responses:
+        200:
+          description: '删除接口请求成功'
+          schema:
+            type: object
+            additionalProperties:
+              type: object 
+definitions:
+  Card:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 主键id
+      name:
+        type: string
+        description: 名称
+      costs:
+        type: integer
+        description: 卡片费用
+      quality:
+        type: integer
+        description: 卡牌品质
+      characters:
+        type: integer
+        description: 特效
+      race:
+        type: integer
+        description: 种族
+      imgUrl:
+        type: string
+        description: 图片链接
+      barImgUrl:
+        type: string
+        description: 条形图片链接
+      occupationId:
+        type: integer
+        description: 所属职业
+      dust:
+        type: integer
+        description: 粉尘
+      source:
+        type: integer
+        description: 来源
+      effectDesc:
+        type: string
+        description: 效果描述
+      adapted:
+        type: integer
+        description: 适用环境
+      createTime:
+        type: string
+        format: date-time
+        description: 添加时间
+  CardGroup:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 主键id
+      name: 
+        type: string
+        description: 卡组名称
+      logo:
+        type: string
+        description: 卡组logo
+      source:
+        type: string
+        description: 卡组来源
+      cardDetail:
+        type: string
+        description: 卡组详情
+      adapted:
+        type: integer
+        description: 适用环境
+      occuptionId:
+        type: integer
+        description: 卡组所属职业
+      description: 
+        type: string
+        description: 卡组描述
+      createTime: 
+        type: string
+        format: date-time
+        description: 添加时间
+      cardList:
+        type: array
+        items:
+          $ref: '#/definitions/Card'
+  CardGroupRelation:
+    type: object
+    properties:
+      cardId:
+        type: integer
+        description: 卡牌id
+      groupId:
+        type: integer
+        description: 卡组id
+      

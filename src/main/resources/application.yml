@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: heatstone-api
+  datasource: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClass: com.mysql.jdbc.Driver
+freemarker: 
+  cache: false
+  charset: UTF-8
+  check-template-location: true
+  content-type: text/html
+  expose-request-attributes: true
+  expose-session-attributes: true
+  request-context-attribute: request
+multipart: 
+  maxFileSize: 50Mb
+  maxRequestSize: 500Mb
+mybatis: 
+  mapperLocations: "classpath:mapper/*.xml"
+  typeAliasesPackage: com.blizzard.heatstone.api.dao
+server: 
+  port: 8081
+  
+com:
+  qiniu:
+    storage:
+      accessKey: YPjo-AehHWZnR-xvCuY7hS-5vQ6AwO40Th2D76Co
+      secretKey: 4yB_PeHEcMLsfEoC6iwxYoQn0WMbC8atHrUnsrXr
+      domain: "http://oslkcublz.bkt.clouddn.com/"
+      bucketName: heat-stone
+com
+  koubei
+    appid: 2016080800192874
+    app_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCbWkvfcd9NHR6Z66p5SglQUCV1lvx//QE2bmjCu+O5AedUHCrlRPebMfYdjAj2mo79BhXj0bPBtg8lOnYnHX8+mKC7JnvZQvcDJM78P3QgR+Pu0LHkmsQwkPOM5dlwEy6i7J/lMbUXgWY5oKHO16Nwmq+zCnEIEfGsSWXvfJpbOY7NfCrkQ7lChIC6BRUj0xKX7Llosfv7UcxjvcbglSNP1vU9Boh0hzm8XcmGgkWz1xDfgyHQpmPqk3fdQ/Nd+yqiyDwo5hJ0D6dS2a/SkyKp/fwvgSOg8r33tOVhSlgmSZU/NJtcKM6SwXSxPUN+YQkmhPzTJpnZivN7Epc4lBoFAgMBAAECggEADJNFmwPDuKFHzdvWw9SrZlXmgltDezTGuVo8nq7I4zv1NsjE7CQmCukDbCbevt+J/Y9VjEh4TZDoLvJJiCcKGs4ODLgzxEV4a0e6fY7BXq+TEszP6ZphkTDaligw7rKOzt9qngnlB88QsE+BaZXpA/9xg4Ov3KBfOLwERVuHvySMPy1X5gQ0DVdcRDRe8jaiBnOaM/dK+fPcqRkOMobOvfGYswbAb1NAX4qGEirbvEvp4dNRiSoBW9D0lBFP5e1XopnWTHP3krAOHPWvJbL4lteqjqev7aiEJiR8aFz/JfjGfZQX7+/nDYyVNIzS+9w+TR2crrnOl5bwIs8XG6RV4QKBgQDVhrOkkiTpoFne7pCn54ft90Gubcfyu927CsaA+FS+/ylDFdLbvM8uojUpVOetuBCY1GY9wiXFt8AhP6yb0SLbAreVmh4KH1bmtG1haFTlRbsh49CcQVKuqZqKFWNFIW21BhsmOzqyyTycMW8I3CgapSvB+8gAwlz9Xx3n0T9WHQKBgQC6QUDrsKZPxq07j31Yy32POMpIC5ZED36O3UAT4rOp0PnQPCvucGlBWjMqE7ySIxKoN0H7iMIHQuE3lex3xh0Y9BrWaf9I6iQuQa8i3okF9D7sts6QejFq0Mx+GLs7mqZ7Zf94gU5IsSrDTuujwFLKDexr5tYQv0d0Nxz7tbnvCQKBgBhdNGZU3q1hxJ9xbUQbYSFAE1iJ4kTKNvS+uAPDUjgw+U5UUSkNlD5n99TtgToLRKmLotbtLk4vN1cT4ugspuOCndwOJ9tT1CCi+dAhjX5TxJSLYCRUN9ECPUYARsF+nPwI5FQqcfowiB/ybA8Av/q6WhHaXunnQ6ENl2X6NFXpAoGBAJIT657uhQG8iNFV0LF7p5ZUrBGlRM1Mea4CyObPvqlJRSSUjMANWf/vhoFRyWu0JkXYUN++eq7HPWwjIbsunlOb4BCaQaYmPQoqafmnH0CUN2XgWlHmBCwKZtfe/bnZqQjPDnass4E/spJLq3RaupPOJ8bY3Lt1yczUDN89v/5BAoGAZXFbZWFhcLkuRtBQ5ENFgNNoNwT1TYPO9V8wFbg4oZy/IW+xsvLATT6dASODRhF/l8GsJTv5DgLkIeIkVJdynvT6YLB1qVYCh7pDb3AsJfaJN5mvgxM9IXPNbGcgzojPmwtPBJ1PEs3ulPuXn2cmtPZB+ZcsQ9C+uCYfF19ga0E=     
+    chatset: UTF-8
+    alipay_public_key: 
+---
+spring: 
+  profiles: default
+  datasource: 
+    password: root
+    url: "jdbc:mysql://127.0.0.1/heat-stone"
+    username: root
+---
+spring: 
+  profiles: test
+  datasource: 
+    password: heart
+    url: "jdbc:mysql://116.62.114.108/heat-stone"
+    username: root
